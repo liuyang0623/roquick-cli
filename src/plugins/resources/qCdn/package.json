@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@q/qcdn": "^3.2.2"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "less": "^4.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "rollup-plugin-postcss": "^4.0.2"
+  }
+}

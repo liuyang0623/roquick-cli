@@ -1,0 +1,29 @@
+{
+  "name": "javascript-template",
+  "version": "0.1.0",
+  "main": "dist/javascript-template.js",
+  "license": "MIT",
+  "module": "dist/javascript-template-es.js",
+  "scripts": {
+    "dev": "rollup -w -c --environment NODE_ENV:development",
+    "build": "rollup -c --environment NODE_ENV:production",
+    "clean": "rimraf dist/"
+  },
+  "dependencies": {
+    "preact": "^10.23.2"
+  },
+  "devDependencies": {
+    "copy": "^0.3.2",
+    "rimraf": "^6.0.1",
+    "rollup": "^2.13.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@babel/preset-env": "^7.25.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/plugin-transform-react-jsx": "^7.25.2",
+    "@rollup/plugin-alias": "^5.1.0"
+  }
+}

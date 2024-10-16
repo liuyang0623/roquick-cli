@@ -1,0 +1,49 @@
+{
+  "name": "ro-quick",
+  "version": "0.0.7",
+  "main": "bin/cli.js",
+  "bin": {
+    "roquick": "./bin/cli.js"
+  },
+  "scripts": {
+    "li": "ts-node -O  \"{\\\"module\\\": \\\"commonjs\\\"}\" src/cli.ts",
+    "dev": "nodemon -w src/cli.ts --exec \"pnpm li create test/example\"",
+    "build": "rollup -c && pnpm copy ./src/plugins/resources/ bin/resources/ && pnpm copy ./src/helpers/templates/ bin/templates/",
+    "test:create": "pnpm li create test/example"
+  },
+  "keywords": [
+    "cli",
+    "rollup"
+  ],
+  "author": "liuyang",
+  "license": "ISC",
+  "description": "",
+  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
+  "dependencies": {
+    "@babel/core": "^7.25.7",
+    "@babel/parser": "^7.25.7",
+    "@babel/traverse": "^7.25.7",
+    "commander": "^12.1.0",
+    "deepmerge": "^4.3.1",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^7.0.0",
+    "lodash": "^4.17.21",
+    "shelljs": "^0.8.5",
+    "sort-package-json": "^1.23.1"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.25.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
+    "@types/lodash": "^4.17.10",
+    "@types/shelljs": "^0.8.15",
+    "copy-dir-cli": "^0.0.3",
+    "nodemon": "^3.1.7",
+    "rollup": "^4.24.0",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2"
+  }
+}
