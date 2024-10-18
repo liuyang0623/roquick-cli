@@ -16,8 +16,8 @@ import { parseExpression } from '@babel/parser'
 import { findLastIndex } from 'lodash'
 import { updateJSONFile } from '../helpers/updateJSONFile'
 import { getProjectName } from '../helpers/common'
-import pkgJSON from './resources/devServer/package.json'
-import { copySync, readFileSync, writeFileSync } from 'fs-extra'
+import pkgJSON from './resources/dev/package.json'
+import { readFileSync, writeFileSync, mkdirSync } from 'fs-extra'
 import { BasePlugin } from './base/BasePlugin'
 import { JSPlugin } from './base/constant'
 import merge from 'deepmerge'
@@ -35,7 +35,7 @@ export class DevServerPlugin extends BasePlugin {
 
     // 更新测试html内容
     const projectName = getProjectName(this.projectDir)
-    const testHtmlPath = resolve(__dirname, './resources/devServer/tpl/index.html')
+    const testHtmlPath = resolve(__dirname, './resources/dev/index.tpl')
     const testHtmlStr = readFileSync(testHtmlPath, {
       encoding: 'utf8'
     })
@@ -46,8 +46,11 @@ export class DevServerPlugin extends BasePlugin {
       </script>
     `
     const replaceHtmlStr = testHtmlStr.replace('<--DEMO_TITLE-->', 'test').replace('<--INJECT_SCRIPT-->', scriptStr)
-    writeFileSync(resolve(__dirname, './resources/devServer/test/index.html'), replaceHtmlStr, { encoding: 'utf8' })
-    copySync(resolve(__dirname, './resources/devServer/test/'), resolve(this.projectDir, 'test'))
+    // 创建test文件夹
+    mkdirSync(resolve(this.projectDir, 'test'))
+    writeFileSync(resolve(this.projectDir, 'test/index.html'), replaceHtmlStr, {
+      encoding: 'utf8',
+    })
 
     // 配置devServer
     const devPluginImport = (parseSync(
