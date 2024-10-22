@@ -13,6 +13,7 @@ import { PrettierPlugin } from './plugins/prettier'
 import { QCdnPlugin } from "./plugins/qCdn"
 import { StylePlugin } from "./plugins/style"
 import { DevServerPlugin } from "./plugins/devServer"
+import { AdPlugin } from "./plugins/ad"
 import { initProject } from "./helpers/initProject"
 
 const program = new Command()
@@ -105,6 +106,12 @@ async function createJavaScriptProject(projectDir: string) {
     plugin.projectDir = projectDir
     plugins.push(plugin)
   }
+  if (options.includes(JSPlugin.AdFetch)) {
+    const plugin = new AdPlugin('js')
+    plugin.projectDir = projectDir
+    plugins.push(plugin)
+  }
+  
 
   // 初始化项目
   initProject(projectDir, TemplateType.JavaScript)
@@ -146,8 +153,13 @@ async function createJSXProject(projectDir: string) {
     plugin.projectDir = projectDir
     plugins.push(plugin)
   }
-  if (options.includes(JSXPlugin.devServer)) {
+  if (options.includes(JSXPlugin.DevServer)) {
     const plugin = new DevServerPlugin()
+    plugin.projectDir = projectDir
+    plugins.push(plugin)
+  }
+  if (options.includes(JSXPlugin.AdFetch)) {
+    const plugin = new AdPlugin('jsx')
     plugin.projectDir = projectDir
     plugins.push(plugin)
   }
@@ -198,6 +210,11 @@ async function createTypeScriptProject(projectDir: string) {
     plugin.projectDir = projectDir
     plugins.push(plugin)
   }
+  if (options.includes(TSPlugin.AdFetch)) {
+    const plugin = new AdPlugin('ts')
+    plugin.projectDir = projectDir
+    plugins.push(plugin)
+  }
 
   // 初始化项目
   initProject(projectDir, TemplateType.TypeScript)
@@ -239,8 +256,13 @@ async function createTSXProject(projectDir: string) {
     plugin.projectDir = projectDir
     plugins.push(plugin)
   }
-  if (options.includes(TSXPlugin.devServer)) {
+  if (options.includes(TSXPlugin.DevServer)) {
     const plugin = new DevServerPlugin()
+    plugin.projectDir = projectDir
+    plugins.push(plugin)
+  }
+  if (options.includes(TSXPlugin.AdFetch)) {
+    const plugin = new AdPlugin('tsx')
     plugin.projectDir = projectDir
     plugins.push(plugin)
   }

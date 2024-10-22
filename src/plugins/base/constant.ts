@@ -5,7 +5,8 @@ export enum JSPlugin {
   Babel,
   Prettier,
   QCdn,
-  devServer,
+  DevServer,
+  AdFetch,
 }
 
 /**
@@ -14,7 +15,8 @@ export enum JSPlugin {
 export enum TSPlugin {
   Prettier,
   QCdn,
-  devServer,
+  DevServer,
+  AdFetch,
 }
 
 /**
@@ -23,7 +25,8 @@ export enum TSPlugin {
 export enum JSXPlugin {
   Prettier,
   QCdn,
-  devServer,
+  DevServer,
+  AdFetch,
 }
 
 /**
@@ -32,7 +35,8 @@ export enum JSXPlugin {
 export enum TSXPlugin {
   Prettier,
   QCdn,
-  devServer,
+  DevServer,
+  AdFetch,
 }
 
 /**

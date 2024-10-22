@@ -24,7 +24,7 @@ import merge from 'deepmerge'
 
 export class DevServerPlugin extends BasePlugin {
   constructor() {
-    super(JSPlugin.devServer)
+    super(JSPlugin.DevServer)
   }
 
   handle(): void {
